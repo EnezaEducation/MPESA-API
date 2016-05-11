@@ -4,20 +4,18 @@ PHP implementation of MPESA checkout API. Simple for even the non techies.
 
 __TRY OUT__ A sample of the checkout process [HERE](http://crackthecode.co.ke/MPESA/sampleCheckout.php)
 
-You are required to add/create a `.env` file in the `root directory` with the following meta-data:
+The `$PASSWORD` must be generate using the following approach:
 
 ```yaml
-PAYBILL_NO='123467'
-PASSKEY='ruwioefhisadkjahjfhkjsbckhbzxkhbhkzbchjbKKDHKJSAHKJdh'
-TRANSACTION_PASSWORD='AKSHKLJHjkdjahkbdKJBDJbajkbkjBJKDgakJGDJHBsdkGSJHD=='
-ENDPOINT='https://safaricom.co.ke/mpesa_online/lnmo_checkout_server.php?wsdl'
-CALLBACK_URL='http://crackthecode.co.ke/gizmopay/MPESA/processcheckout.php'
-CALL_BACK_METHOD='POST'
+$MERCHENTS_ID = $PAYBILL_NO;
+$TIMESTAMP = date("YmdHis",time());// in this format strictly
+$PASSKEY = "your SAG password";
+$PASSWORD = base64_encode(hash("sha256", $MERCHENTS_ID.$PASSKEY.$TIMESTAMP ,True));
 ```
 
-*__PLEASE NOTE__: _it is just a text file named `.env`*
+*__PLEASE NOTE__: _if `$TIMESTAMP` used is different from the one used to create the `$PASSWORD` it will lead to AUTHETICATION ERROR*
 
-And you are __DONE__. It should now work out of the box.
+And you are __DONE__. Simple.
 
 ---
 

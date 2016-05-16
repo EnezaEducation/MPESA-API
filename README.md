@@ -10,7 +10,7 @@ The `$PASSWORD` must be generate using the following approach:
 $MERCHENTS_ID = $PAYBILL_NO;
 $TIMESTAMP = date("YmdHis",time());// in this format strictly
 $PASSKEY = "your SAG password";
-$PASSWORD = base64_encode(hash("sha256", $MERCHENTS_ID.$PASSKEY.$TIMESTAMP ,True));
+$PASSWORD = base64_encode(hash("sha256", $MERCHENTS_ID.$PASSKEY.$TIMESTAMP));
 ```
 
 *__PLEASE NOTE__: _if `$TIMESTAMP` used is different from the one used to create the `$PASSWORD` it will lead to AUTHETICATION ERROR*
